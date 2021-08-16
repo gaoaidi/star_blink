@@ -14,6 +14,12 @@ class StarBlink:
             (self.settings.screen_width,self.settings.screen_height))
         pygame.display.set_caption("Star Blink")
 
+        self.fclock = pygame.time.Clock()   # creat a object to track time(控制时间)
+        self.fps = 0.5
+        # fclock.tick(fps)   控制每次屏幕刷新的时间间隔，每次屏幕刷新后都引用此方法 （
+        #This method should be called once per frame. It will compute how many milliseconds have passed since the previous call.）*
+
+
         self.stars=pygame.sprite.Group()
         self._stars_group()
 
@@ -42,6 +48,7 @@ class StarBlink:
             self._check_events()
             # self._star_update()
             self._screen_update()
+            # self.fclock.tick(self.fps)
 
     def _check_events(self):
         for event in pygame.event.get():
@@ -53,7 +60,7 @@ class StarBlink:
     
     def _screen_update(self):
         self.screen.fill(self.settings.bg_color)
-        self.stars.draw(self.screen)
+        # self.stars.draw(self.screen)
         self._draw_stars()
         pygame.display.update()
 
